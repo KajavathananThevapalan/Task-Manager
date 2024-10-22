@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <h1>Update Task</h1>
+      <hr>
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text"  class="form-control" id="title"
+          name="title" required formControlName="title" >
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <input class="form-control" type="text"  class="form-control" id="password"
+          name="password" formControlName="description">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="dueDate">Due Date</label>
+        <input class="form-control" type="date" class="form-control" id="dueDate"
+          name="dueDate" formControlName="dueDate">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="priority">Priority</label>
+        <select formControlName="priority">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit
+      </button>
+  
+    </form>
+  </div>
+

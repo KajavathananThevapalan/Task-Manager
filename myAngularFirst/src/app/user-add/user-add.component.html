@@ -1,0 +1,30 @@
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <h1>{{isEditMode == true ? 'Update User' : ' Add New User'}}</h1>
+      <hr>
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text"  class="form-control" id="name"
+          name="name" required formControlName="name" >
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="text"  class="form-control" id="email"
+          name="email" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-control" type="text" class="form-control" id="password"
+          name="password" required formControlName="password">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="phone">Phone</label>
+        <input class="form-control" type="text"  class="form-control" id="phone"
+          name="phone" formControlName="phone">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit
+      </button>
+  
+    </form>
+  </div>
+

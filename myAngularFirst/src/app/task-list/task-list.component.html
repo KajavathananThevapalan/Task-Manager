@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-light">
+    <form class="d-flex">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchInput" name="search">
+      <button type="button" [routerLink]="['/task-add']" class="btn btn-dark position-absolute top-1 end-0"><i class="bi bi-plus-lg"></i> New Task</button>
+    </form>
+  </nav>
+  <table class="table">
+    <thead>
+      <tr>
+        <td scope="col">Id</td>
+        <td scope="col">Title</td>
+        <td scope="col">Description</td>
+        <td scope="col">DueDate</td>
+        <td scope="col">Priority</td>
+        <td scope="col">Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks | search:searchInput">
+        <td>{{task.id}}</td>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.dueDate}}</td>
+        <td>{{task.priority}}</td>
+        <td>
+          <span><button><i class="bi bi-pen" (click)="onEdit(task.id)"></i></button></span>
+          <span><button (click)="onDelete(task.id)"><i class="bi bi-trash3-fill "></i></button></span>
+        </td>
+    </tbody>
+  </table>
