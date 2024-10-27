@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskServiceService } from '../task-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
+import { User, UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-task-edit',
@@ -14,23 +15,47 @@ export class TaskEditComponent implements OnInit{
   taskForm :FormGroup;
 
   taskId:number;
+  users : User[] = [];
 
 
-  constructor(private fb : FormBuilder,private taskService : TaskServiceService, private toastr : ToastrService,private route : ActivatedRoute, private router: Router){
+  constructor(private fb : FormBuilder,private taskService : TaskServiceService, private toastr : ToastrService,private userService : UserServiceService,private route : ActivatedRoute, private router: Router){
     const editId = Number(this.route.snapshot.paramMap.get("id"));
     this.taskId = editId;
-
-
     this.taskForm =this.fb.group({
       id:[''],
       title:['',[Validators.required]],
       description:[''],
       dueDate:[''],
-      priority:['',[Validators.required]]
+      priority:['',[Validators.required]],
+      assigneeId: [''],
+      checkLists:this.fb.array([])
     })
   }
 
+  get myCheckLists(): FormArray{
+    return this.taskForm.get('checkLists') as FormArray
+  }
+
+  addmyCheckLists(){
+    this.myCheckLists.push(
+      this.fb.group({
+        name: [''],
+        isDone: [false]
+      })
+    )};
+
+  removemyCheckLists(index : number){
+    this.myCheckLists.removeAt(index);
+  }
+
   ngOnInit():void{
+    console.log(this.myCheckLists);
+    
+    this.userService.getUsers().subscribe(data =>
+      {
+        this.users = data;
+      }
+    )
     this.taskService.getTask(this.taskId).subscribe(data => {
       console.log(data);
       data.dueDate = new Date(data.dueDate).toISOString().slice(0,10);
@@ -39,12 +64,16 @@ export class TaskEditComponent implements OnInit{
         title :data.title,
         description: data.description,
         dueDate:data.dueDate,
-        priority:data.priority
+        priority:data.priority,
+        assigneeId: data.assignee?.name,
+        checkLists:data.assignee?.tasks
+
       });
     },error => {
       this.toastr.error("Task is not found");
     });
     }
+    
 
     onSubmit(){
       let task = this.taskForm.value;

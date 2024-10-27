@@ -1,33 +1,63 @@
 <div class="container">
+  <div class="row">
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-      <h1>Update Task</h1>
-      <hr>
-      <div class="mb-3">
-        <label class="form-label" for="title">Title</label>
-        <input class="form-control" type="text"  class="form-control" id="title"
-          name="title" required formControlName="title" >
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="description">Description</label>
-        <input class="form-control" type="text"  class="form-control" id="password"
-          name="password" formControlName="description">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="dueDate">Due Date</label>
-        <input class="form-control" type="date" class="form-control" id="dueDate"
-          name="dueDate" formControlName="dueDate">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="priority">Priority</label>
-        <select formControlName="priority">
+      <div class="col-7">
+        <h1>Update Task</h1>
+        <hr>
+        <div class="mb-3">
+          <label class="form-label" for="title">Title</label>
+          <input class="form-control" type="text" class="form-control" id="title" name="title" required
+            formControlName="title">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="description">Description</label>
+          <input class="form-control" type="text" class="form-control" id="password" name="password"
+            formControlName="description">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="dueDate">Due Date</label>
+          <input class="form-control" type="text" bsDatepicker class="form-control" id="dueDate" name="dueDate"
+            formControlName="dueDate">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="priority">Priority</label>
+          <select formControlName="priority">
             <option>High</option>
             <option>Medium</option>
             <option>Low</option>
-        </select>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="asignee">Assignee</label>
+          <select formControlName="assigneeId">
+            <option *ngFor="let user of users" [value]="user.id">
+              {{user.name}}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit
+        </button>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit
-      </button>
-  
+      <div class="col-5">
+        <div formArrayName="checkLists">
+          <h2>Check Lists</h2>
+          <div class="row" *ngFor="let checkList of myCheckLists.controls; let i=index">
+          
+              <div class="mb-3 d-flex " [formGroupName]="i">
+                <input type="checkbox" class="form-check-input m-3" id="checkbox" formControlName="isDone">
+                <input type="text" class="form-control m-3" id="name" formControlName="name">
+                <button class="btn btn-danger m-3" (click)="removemyCheckLists(i)">
+                  Remove
+                </button>
+              
+            </div>
+
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="addmyCheckLists()">
+          Add
+        </button>
+      </div>
     </form>
   </div>
-
+</div>

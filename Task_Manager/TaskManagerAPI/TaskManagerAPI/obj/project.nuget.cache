@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N5HNZaWEfHY=",
+  "dgSpecHash": "IqvfR9bT+3g=",
   "success": true,
-  "projectFilePath": "X:\\Angular\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
+  "projectFilePath": "X:\\Angular\\Task-Manager-Main\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UT01360\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\UT01360\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

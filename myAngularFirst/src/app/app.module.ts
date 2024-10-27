@@ -15,6 +15,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { SearchUserPipe } from './pipe/search-user.pipe';
 import { SearchPipe } from './pipe/search.pipe';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,13 @@ import { SearchPipe } from './pipe/search.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BsDatepickerModule
     
   ],
-  providers: [],
+  providers: [
+    BsModalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

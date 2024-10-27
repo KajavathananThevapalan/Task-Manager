@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService, Address } from '../user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -29,7 +29,12 @@ export class UserAddComponent implements OnInit{
       name: ['',[Validators.required]],
       email: [''],
       password: ['',[Validators.required]],
-      phone: ['']
+      phone: [''],
+      address: this.fb.group({
+        addressLine1:['',[Validators.required]],
+        addressLine2:[''],
+        city: ['']
+      })
     })
 
   }
@@ -43,7 +48,14 @@ export class UserAddComponent implements OnInit{
           name :data.name,
           email: data.email,
           password:data.password,
-          phone:data.phone
+          phone:data.phone,
+          address:({
+
+            addressLine1: data.address?.addressLine1,
+            addressLine2: data.address?.addressLine2,
+            city: data.address?.city
+          })
+
         });
       },error => {
         this.toastr.error("User is not found");
@@ -57,6 +69,8 @@ export class UserAddComponent implements OnInit{
     
     if(this.isEditMode == true){
       user.id =  this.userId;
+      user.address.id = this.userId;
+      console.log(user.id);
       this.userService.updateUser(user).subscribe(data => {
           this.toastr.success("User is updated Successfully...")
           this.router.navigate(['/users']);

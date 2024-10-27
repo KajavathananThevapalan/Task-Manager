@@ -8137,11 +8137,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Angular\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "projectUniqueName": "X:\\Angular\\Task-Manager-Main\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
       "projectName": "TaskManagerAPI",
-      "projectPath": "X:\\Angular\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "projectPath": "X:\\Angular\\Task-Manager-Main\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\TaskManagerAPI.csproj",
       "packagesPath": "C:\\Users\\UT01360\\.nuget\\packages\\",
-      "outputPath": "X:\\Angular\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\obj\\",
+      "outputPath": "X:\\Angular\\Task-Manager-Main\\Task_Manager\\TaskManagerAPI\\TaskManagerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\UT01360\\AppData\\Roaming\\NuGet\\NuGet.Config",

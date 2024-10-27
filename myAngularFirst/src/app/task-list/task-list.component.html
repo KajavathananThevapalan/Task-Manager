@@ -12,6 +12,7 @@
         <td scope="col">Description</td>
         <td scope="col">DueDate</td>
         <td scope="col">Priority</td>
+        <td scope="col">Assignee</td>
         <td scope="col">Actions</td>
       </tr>
     </thead>
@@ -22,9 +23,10 @@
         <td>{{task.description}}</td>
         <td>{{task.dueDate}}</td>
         <td>{{task.priority}}</td>
+        <td>{{task.assignee?.name}}</td>
         <td>
-          <span><button><i class="bi bi-pen" (click)="onEdit(task.id)"></i></button></span>
-          <span><button (click)="onDelete(task.id)"><i class="bi bi-trash3-fill "></i></button></span>
+          <span><button class="btn btn-primary m-2 p-2"><i class="bi bi-pen" (click)="onEdit(task.id)"></i></button></span>
+          <span><button class=" btn btn-danger m-2 p-2"(click)="onDelete(task.id)"><i class="bi bi-trash3-fill"></i></button></span>
         </td>
     </tbody>
   </table>

@@ -13,6 +13,11 @@ namespace TaskManagerAPI
         [Required]
         public string Priority { get; set; }
 
+        public User? Assignee { get; set; }
+        public int? AssigneeId { get; set; }
+
+        public ICollection<CheckList>? CheckLists { get; set; }
+
 
     }
 }

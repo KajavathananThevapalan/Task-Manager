@@ -13,9 +13,12 @@ export class UserListComponent {
 
   }
   searchUserInput='';
-
+  NumberofTask=0;
+  
   users: User[]=[];
   
+
+
   ngOnInit(): void {
     this.loadUsers();
     }

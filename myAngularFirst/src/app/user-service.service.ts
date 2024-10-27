@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Task } from './task-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,18 @@ export class UserServiceService {
     email:string;
     password:string;
     phone:string;
+    address?:Address;
+    tasks:Task[];
   }
+
+  export interface Address{
+    id:number;
+    addressLine1:string;
+    addressLine2:string;
+    city:string;
+  }
+
+
+
   
 
