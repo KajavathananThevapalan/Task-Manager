@@ -1,0 +1,98 @@
+<!-- <h1><a [routerLink]="['/tasks']">Tasks</a></h1>
+<h1><a [routerLink]="['/users']">Users</a></h1> -->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Sidebars · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="admin-component.component.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="https://th.bing.com/th/id/OIP.3tt7aXi_1jpH9w4swy-J5QHaHa?rs=1&pid=ImgDetMain" width="40"
+                height="40" class="d-inline-block align-top m-2" alt="">
+            Unicom Tic
+        </a>
+        <form class="d-flex  my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="OnLogOut()">LogOut</button>
+        </form>
+
+    </nav>
+    <main>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <span class="fs-4">Task Management</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a  class="nav-link text-white" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16">
+                          
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/users']" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#speedometer2" />
+                        </svg>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/admin/tasks']" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#table" />
+                        </svg>
+                        Tasks
+                    </a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+        <div class="b-example-divider"></div>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        
+    </main>
+</body>
+
+</html>

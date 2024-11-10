@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,14 +26,15 @@ namespace TaskManagerAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskItem>>> GetTasks()
         {
-            return await _context.Tasks.Include(b =>b.Assignee).ToListAsync();
+            return await _context.Tasks.Include(b =>b.Assignee).Include(c => c.CheckLists).ToListAsync();
+
         }
 
         // GET: api/TaskItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskItem>> GetTaskItem(int id)
         {
-            var taskItem = await _context.Tasks.Include(a => a.Assignee).FirstOrDefaultAsync(b => id == b.Id);
+            var taskItem = await _context.Tasks.Include(a => a.Assignee).Include(c => c.CheckLists).FirstOrDefaultAsync(b => id == b.Id);
 
             if (taskItem == null)
             {
@@ -76,6 +78,7 @@ namespace TaskManagerAPI.Controllers
         // POST: api/TaskItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize (Roles = "Admin")]
         public async Task<ActionResult<TaskItem>> PostTaskItem(TaskItem taskItem)
         {
             _context.Tasks.Add(taskItem);

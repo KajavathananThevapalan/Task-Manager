@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
     <form class="d-flex">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchInput" name="search">
-      <button type="button" [routerLink]="['/task-add']" class="btn btn-dark position-absolute top-1 end-0"><i class="bi bi-plus-lg"></i> New Task</button>
+      <button type="button" [routerLink]="['/admin/task-add']" *appHasRole="'Admin'" class="btn btn-dark position-absolute top-1 end-0"><i class="bi bi-plus-lg"></i> New Task</button>
     </form>
   </nav>
   <table class="table">

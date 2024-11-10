@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { TaskServiceService } from '../task-service.service';
+
 import { Router } from '@angular/router';
-import { User, UserServiceService } from '../user-service.service';
+import { User, UserServiceService} from '../services/user-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { TaskServiceService } from '../services/task-service.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class TaskAddComponent implements OnInit{
   taskForm :FormGroup;
   users : User[] = [];
 
-  constructor(private fb : FormBuilder,private taskService : TaskServiceService, private router: Router,private userService : UserServiceService){
+  constructor(private fb : FormBuilder,private taskService : TaskServiceService, private router: Router,private userService : UserServiceService,private toastr : ToastrService){
     
     this.taskForm =this.fb.group({
       title:['',[Validators.required]],
@@ -54,7 +56,7 @@ export class TaskAddComponent implements OnInit{
   onSubmit(){
     let task = this.taskForm.value;
     this.taskService.createTask(task).subscribe(data => {
-        this.router.navigate(['/tasks']);
+        this.router.navigate(['/admin/tasks']);
       }
     )
   }

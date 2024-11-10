@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-      <div class="col-7">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
         <h1>Update Task</h1>
         <hr>
         <div class="mb-3">
@@ -38,15 +38,19 @@
         <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit
         </button>
       </div>
-      <div class="col-5">
+      <div class="col">
         <div formArrayName="checkLists">
           <h2>Check Lists</h2>
+          <div *ngFor="let item of checkList">
+            {{item.name}}
+          </div>
+          <!-- *ngFor="let item of checkList" -->
           <div class="row" *ngFor="let checkList of myCheckLists.controls; let i=index">
           
               <div class="mb-3 d-flex " [formGroupName]="i">
                 <input type="checkbox" class="form-check-input m-3" id="checkbox" formControlName="isDone">
                 <input type="text" class="form-control m-3" id="name" formControlName="name">
-                <button class="btn btn-danger m-3" (click)="removemyCheckLists(i)">
+                <button type="button" class="btn btn-danger m-3" (click)="removemyCheckLists(i)">
                   Remove
                 </button>
               
@@ -54,10 +58,10 @@
 
           </div>
         </div>
-        <button class="btn btn-primary" (click)="addmyCheckLists()">
+        <button type="button" class="btn btn-primary" (click)="addmyCheckLists()">
           Add
         </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

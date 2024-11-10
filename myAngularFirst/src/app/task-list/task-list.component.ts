@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Task, TaskServiceService } from '../task-service.service';
+
 import {  ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Task, TaskServiceService } from '../services/task-service.service';
 
 @Component({
   selector: 'app-task-list',
@@ -31,7 +32,7 @@ export class TaskListComponent {
   }
 
   onEdit(taskId:number){
-    this.router.navigate(['task-edit/',taskId])
+    this.router.navigate(['admin/task-edit/',taskId])
   }
 
   loadTasks(){

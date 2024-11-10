@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskServiceService } from './task-service.service';
+import { TaskServiceService } from './services/task-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ export class AppComponent {
   title = 'myAngularFirst';
 
 
-constructor(private taskService : TaskServiceService){
-  
- }
+  constructor(private taskService: TaskServiceService) {
+
+  }
 
 }

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 
@@ -17,6 +17,14 @@ import { SearchUserPipe } from './pipe/search-user.pipe';
 import { SearchPipe } from './pipe/search.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { CommonModule } from '@angular/common';
+import { RegisterComponentComponent } from './register-component/register-component.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { BlankComponentComponent } from './layouts/blank-component/blank-component.component';
+import { AdminComponentComponent } from './layouts/admin-component/admin-component.component';
+import { MyInterceptorService } from './interceptors/my-interceptor.service';
+import { HasRoleDirective } from './has-role.directive';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +35,15 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     TaskEditComponent,
     UserListComponent,
     UserAddComponent,
-    SearchUserPipe
+    RegisterComponentComponent,
+    LoginComponentComponent,
+    SearchUserPipe,
+    RegisterComponentComponent,
+    LoginComponentComponent,
+    BlankComponentComponent,
+    AdminComponentComponent,
+    HasRoleDirective
+
   ],
   imports: [
     BrowserModule,
@@ -37,11 +53,14 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BsDatepickerModule
+    BsDatepickerModule,
+    CommonModule
     
   ],
   providers: [
-    BsModalService
+    BsModalService,
+    {provide:HTTP_INTERCEPTORS,useClass:MyInterceptorService,multi:true}
+   
   ],
   bootstrap: [AppComponent]
 })

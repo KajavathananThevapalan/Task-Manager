@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskServiceService } from '../task-service.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
-import { User, UserServiceService } from '../user-service.service';
+import { User, UserServiceService } from '../services/user-service.service';
+import { CheckList, TaskServiceService } from '../services/task-service.service';
 
 @Component({
   selector: 'app-task-edit',
@@ -16,7 +17,10 @@ export class TaskEditComponent implements OnInit{
 
   taskId:number;
   users : User[] = [];
+  checkList?: CheckList[];
+   currentTask:undefined;
 
+   currentTaskId:any;
 
   constructor(private fb : FormBuilder,private taskService : TaskServiceService, private toastr : ToastrService,private userService : UserServiceService,private route : ActivatedRoute, private router: Router){
     const editId = Number(this.route.snapshot.paramMap.get("id"));

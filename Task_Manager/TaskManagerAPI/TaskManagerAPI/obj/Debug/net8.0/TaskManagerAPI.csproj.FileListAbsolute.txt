@@ -517,3 +517,5 @@ X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debu
 X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\TaskManagerAPI.pdb
 X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\TaskManagerAPI.genruntimeconfig.cache
 X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\obj\Debug\net8.0\ref\TaskManagerAPI.dll
+X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\bin\Debug\net8.0\BCrypt.Net.dll
+X:\Angular\Task-Manager-Main\Task_Manager\TaskManagerAPI\TaskManagerAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

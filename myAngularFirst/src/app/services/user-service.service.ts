@@ -28,7 +28,9 @@ export class UserServiceService {
     return this.http.put('http://localhost:5212/api/Users/'+user.id,user);
   }
   
-  
+  // registerUser(regUsers:any){
+  //   return this.http.post('http://localhost:5212/api/UserRegister',regUsers)
+  // }
   
   }
   
@@ -47,6 +49,13 @@ export class UserServiceService {
     addressLine1:string;
     addressLine2:string;
     city:string;
+  }
+
+  export interface IUserRegister{
+    name:string;
+    email:string;
+    password:string;
+    role:string;
   }
 
 

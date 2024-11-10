@@ -46,14 +46,14 @@
             <div class="mb-3 d-flex">
               <input type="checkbox" class="form-check-input m-3" id="checkbox" formControlName="isDone">
               <input type="text" class="form-control m-3" id="name" formControlName="name">
-              <button class="btn btn-danger m-3" (click)="removemyCheckLists(i)">
+              <button type="button" class="btn btn-danger m-3" (click)="removemyCheckLists(i)">
                 Remove
               </button>
             </div>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary" (click)="addmyCheckLists()">
+      <button type="button" class="btn btn-primary" (click)="addmyCheckLists()">
         Add
       </button>
     </div>

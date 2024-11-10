@@ -76,6 +76,34 @@ namespace TaskManagerAPI.Migrations
                     b.ToTable("CheckList");
                 });
 
+            modelBuilder.Entity("TaskManagerAPI.DTOs.UserRegister", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsersRegister");
+                });
+
             modelBuilder.Entity("TaskManagerAPI.TaskItem", b =>
                 {
                     b.Property<int>("Id")

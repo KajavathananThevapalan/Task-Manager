@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TaskManagerAPI.DTOs;
 
 namespace TaskManagerAPI.Data
 {
@@ -33,6 +34,7 @@ namespace TaskManagerAPI.Data
 
         public DbSet<TaskItem> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRegister> UsersRegister { get; set; }
 
     }
 }

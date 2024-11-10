@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User, UserServiceService } from '../user-service.service';
+import { User, UserServiceService } from '../services/user-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -33,7 +33,7 @@ export class UserListComponent {
   }
 
   onEdit(userId:number){
-    this.router.navigate(['user-edit/',userId])
+    this.router.navigate(['admin/user-edit/',userId])
   }
 
   loadUsers(){
